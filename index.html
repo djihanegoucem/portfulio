@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djihan Gousem | Comprehensive Media Journalist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           DESIGN SYSTEM & ROOT VARIABLES
+           ============================================ */
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #2d2d2d;
+            --color-accent: #d4af37;
+            --color-text: #333;
+            --color-text-light: #666;
+            --color-bg: #fafafa;
+            --color-white: #ffffff;
+            --color-border: #e0e0e0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --duration-fast: 300ms;
+            --duration-normal: 600ms;
+            --duration-slow: 1000ms;
+            --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--duration-fast) var(--ease-smooth);
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           LAYOUT & SPACING
+           ============================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--color-white);
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            animation: slideDown var(--duration-normal) var(--ease-smooth);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            transition: color var(--duration-fast) var(--ease-smooth);
+        }
+
+        .logo:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            color: var(--color-text-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width var(--duration-fast) var(--ease-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2.5px;
+            background-color: var(--color-primary);
+            transition: all var(--duration-fast) var(--ease-smooth);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp var(--duration-slow) var(--ease-smooth) 0.2s both;
+        }
+
+        .hero h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--color-primary);
+            background-color: transparent;
+            color: var(--color-primary);
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-smooth);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-primary);
+            transition: left var(--duration-fast) var(--ease-smooth);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: var(--color-white);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary::before {
+            background-color: var(--color-accent);
+        }
+
+        .btn-primary:hover {
+            border-color: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           SCROLL INDICATOR
+           ============================================ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--color-primary);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content {
+            animation: fadeInUp var(--duration-slow) var(--ease-smooth);
+        }
+
+        .about-image {
+            position: relative;
+            animation: fadeInUp var(--duration-slow) var(--ease-smooth) 0.2s both;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--color-accent);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-accent);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* ============================================
+           EXPERTISE SECTION
+           ============================================ */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            padding: 2rem;
+            background-color: var(--color-white);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            transition: all var(--duration-normal) var(--ease-smooth);
+            animation: fadeInUp var(--duration-slow) var(--ease-smooth);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-accent);
+        }
+
+        .expertise-card h3 {
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .expertise-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-size: 0.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           FEATURED WORK SECTION
+           ============================================ */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .article-card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all var(--duration-normal) var(--ease-smooth);
+            animation: fadeInUp var(--duration-slow) var(--ease-smooth);
+            border: 1px solid var(--color-border);
+        }
+
+        .article-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #ddd 0%, #e8e8e8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            transition: background-color var(--duration-fast) var(--ease-smooth);
+        }
+
+        .article-card:hover .article-image::after {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .publication {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .year {
+            color: var(--color-text-light);
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .article-description {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            color: var(--color-accent);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all var(--duration-fast) var(--ease-smooth);
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+        }
+
+        /* ============================================
+           SKILLS SECTION
+           ============================================ */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .skill-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .skill-item {
+            margin-bottom: 2rem;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
+            border-radius: 3px;
+            width: 0%;
+            animation: expandWidth var(--duration-normal) var(--ease-smooth) forwards;
+        }
+
+        .skill-item:nth-child(1) .skill-progress { animation-delay: 0.1s; }
+        .skill-item:nth-child(2) .skill-progress { animation-delay: 0.2s; }
+        .skill-item:nth-child(3) .skill-progress { animation-delay: 0.3s; }
+        .skill-item:nth-child(4) .skill-progress { animation-delay: 0.4s; }
+        .skill-item:nth-child(5) .skill-progress { animation-delay: 0.5s; }
+
+        /* ============================================
+           AWARDS & TIMELINE
+           ============================================ */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--color-border);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            animation: fadeInUp var(--duration-slow) var(--ease-smooth);
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 2rem);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 2rem);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background-color: var(--color-accent);
+            border: 3px solid var(--color-white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--color-border);
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: var(--color-white);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            transition: all var(--duration-normal) var(--ease-smooth);
+        }
+
+        .timeline-item:hover .timeline-content {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-accent);
+        }
+
+        .timeline-year {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--color-white);
+            transition: all var(--duration-fast) var(--ease-smooth);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp var(--duration-normal) var(--ease-smooth) forwards;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 1024px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 3rem;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 0;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding-top: 60px;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                gap: 1rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">DG</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#awards">Awards</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+  <section class="hero" id="home" 
+  style="background-image: url('hero.png'); background-size: cover; background-position: center; background-repeat: no-repeat; width:100%; min-height:90vh; display:flex; align-items:center;">
+
+  <div class="container" style="width:100%;">
+    <div class="hero-content" style="max-width:600px; margin-left:55%; padding:20px;">
+      
+      <h1>Djihane Goucem</h1>
+      <p class="subtitle">Comprehensive Media Journalist</p>
+
+      <p class="hero-description">
+        Uncovering truth through compelling storytelling and impactful reporting. Specializing in multimedia journalism across television, radio, and digital platforms with a focus on meaningful narratives that educate and inspire audiences.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="#work" class="btn btn-primary">Explore My Work</a>
+        <a href="#about" class="btn">Learn More</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <svg viewBox="0 0 24 24">
+      <path d="M7 10l5 5 5-5z" stroke="currentColor" stroke-width="2" fill="none"></path>
+    </svg>
+  </div>
+
+</section>
+
+    <!-- ============================================
+         ABOUT SECTION
+         ============================================ -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about">
+                <div class="about-content">
+                    <p>
+                       As Djihane Goucem, a multimedia journalist, I’m dedicated to telling stories that inform, inspire, and amplify under-reported voices. Trained in multimedia and investigative storytelling, I approach every topic with rigor and strong journalistic integrity.
+                    </p>
+                     <p>
+                       My reporting work has taken me across Algeria, Oman, Egypt, and Qatar, covering diverse issues and stories that matter beyond borders. Through video, audio, and written journalism, I aim to connect audiences to meaningful narratives while upholding ethical reporting.
+                    </p>
+                     <p>
+                       Recognized as top of my academic cohort and serving as an Arab Youth Ambassador and UN Youth Delegate, I believe media is a powerful tool for positive change. For me, journalism is both a responsibility and a catalyst for shaping the conversations of tomorrow.
+                       I’m driven by impact—creating compelling stories and fostering dialogue through storytelling that matters.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">6+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Articles Published</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Major Awards</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div style="width: 100%; height: 500px; background: linear-gradient(135deg, #d4af37 0%, #deb564 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem;">
+                         <img 
+                            src="about me.jpg" 
+                            alt="Professional Photo" 
+                            style="width:100%; height:500px; object-fit:cover; border-radius:8px;"
+                          />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         EXPERTISE SECTION
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <h2>Areas of Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>Investigative Reporting</h3>
+                    <p>Deep-dive analysis and exposé journalism that uncovers hidden truths and holds institutions accountable.</p>
+                    <div class="tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Analysis</span>
+                        <span class="tag">FOIA</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <h3>Data Journalism</h3>
+                    <p>Transforming complex datasets into compelling visual stories that reveal patterns and insights.</p>
+                    <div class="tags">
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Visualization</span>
+                        <span class="tag">Excel/R</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <h3>Multimedia Storytelling</h3>
+                    <p>Creating engaging content across video, audio, and interactive formats for modern audiences.</p>
+                    <div class="tags">
+                        <span class="tag">Video</span>
+                        <span class="tag">Podcasting</span>
+                        <span class="tag">Interactive</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <h3>Interviewing & Sources</h3>
+                    <p>Building trust and extracting compelling human stories through ethical interview practices.</p>
+                    <div class="tags">
+                        <span class="tag">Interviewing</span>
+                        <span class="tag">Source Development</span>
+                        <span class="tag">Ethics</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <h3>Fact-Checking & Verification</h3>
+                    <p>Rigorous verification methods and fact-checking to ensure accuracy and credibility in all work.</p>
+                    <div class="tags">
+                        <span class="tag">Verification</span>
+                        <span class="tag">Fact-checking</span>
+                        <span class="tag">Source Validation</span>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <h3>Editorial Leadership</h3>
+                    <p>Managing editorial teams, mentoring junior journalists, and setting publication standards.</p>
+                    <div class="tags">
+                        <span class="tag">Editorial</span>
+                        <span class="tag">Mentoring</span>
+                        <span class="tag">Strategy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURED WORK SECTION
+         ============================================ -->
+    <section class="section" id="work">
+        <div class="container">
+            <h2>Featured Work</h2>
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-image">   <img src="dj.png" alt="Doha Dictionary - Arabic Language Project"></div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="publication">Sotouries</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <h3 class="article-title">Doha Dictionary..</h3>
+                        <p class="article-description">
+                           The Doha Historical Dictionary is rewriting the history of our Arabic language. A major Qatari project proving that our language is alive, evolving, and impossible to erase. A dream that became one of the greatest linguistic achievements of the modern era!
+                        </p>
+                        <a href="https://www.instagram.com/reel/DSlC-5eDNtN/?igsh=ZmVnejJoY2QxNmt5" class="read-more">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"><img src="dj2.png" alt="Algeria — a continent within a country."></div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="publication">Aurès</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3 class="article-title">Algeria — a continent within a country.</h3>
+                        <p class="article-description">
+                           Discover its stunning natural and cultural diversity.
+                            Report by: #Djihane_Goucem
+                        </p>
+                        <a href="https://www.facebook.com/share/v/19uTAJUz7s/?mibextid=wwXIfr" class="read-more">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"><img src="dj3.png" alt="The Abu Dhabi International Hunting and Equestrian Exhibition"></div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="publication">DzairTube</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3 class="article-title">The Abu Dhabi International Hunting and Equestrian Exhibition</h3>
+                        <p class="article-description">
+                            Journalist Djihane Goucem in coverage of the Abu Dhabi International Hunting and Equestrian Exhibition.
+                        </p>
+                        <a href="https://youtu.be/Pwi1FgkuveU?feature=shared" class="read-more">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"><img src="dj4.png" alt="Algeria — a continent within a country."></div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="publication">DzairTube</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3 class="article-title">Exclusive interview with Omani journalist Ishaq Al-Harthi.</h3>
+                        <p class="article-description">
+                            A conversation between Algerian journalist Djihane Goucem and Omani journalist Ishaq Al-Harthi.
+                        </p>
+                        <a href="https://youtu.be/lf63EVUTLPE?feature=shared" class="read-more">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"><img src="dj5.png" alt="Arab Cup — Special Coverage"></div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="publication">Watania News</span>
+                            <span class="year">2022</span>
+                        </div>
+                        <h3 class="article-title">Arab Cup — Special Coverage</h3>
+                        <p class="article-description">
+                            Joy is created by the players’ feet and adorned by the ululations of Arab women, who insisted on sharing their countries’ celebrations. Women crafting stories on the sidelines of the Arab Cup.
+                        </p>
+                        <a href="https://www.facebook.com/share/v/1SRahQuNUd/?mibextid=wwXIfr" class="read-more">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image"><img src="dj6.png" alt="Reporting on World Veterinary Day"></div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="publication">DzairTube</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <h3 class="article-title">Reporting on World Veterinary Day</h3>
+                        <p class="article-description">
+                            Celebrating veterinarians’ dedication to animal health, food safety, and community well-being. Stories of heroes in white coats making a difference!
+                        </p>
+                        <a href="https://www.youtube.com/watch?v=me6E9rBjhq4" class="read-more">Read Article →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SKILLS SECTION
+         ============================================ -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2>Professional Skills</h2>
+            <div class="skills-container">
+                <div>
+                    <h3>Journalism Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Investigative Research</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Interviewing</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Fact-Checking</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Storytelling</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3>Technical Tools</h3>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Data Analysis</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Video Editing</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Content Management Systems</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         AWARDS & TIMELINE SECTION
+         ============================================ -->
+    <section class="section" id="awards">
+        <div class="container">
+            <h2>Awards & Milestones</h2>
+            <div class="timeline">
+               <div class="timeline-item">
+    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018–2024</div>
+                        <div class="timeline-title">Top of the Class</div>
+                        <div class="timeline-description">
+                            Consistent academic excellence maintained throughout all years of university study.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2019–2020</div>
+                        <div class="timeline-title">Voice-over Artist</div>
+                        <div class="timeline-description">
+                            Provided professional voice-over narration for news segments and broadcast content at Al-Wataniya News Channel.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020–2024</div>
+                        <div class="timeline-title">Director of Constantine Office</div>
+                        <div class="timeline-description">
+                            Led media operations and journalism initiatives for Dzair News Channel, managing editorial teams and broadcast standards across regional coverage.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021–2024</div>
+                        <div class="timeline-title">Head of Media Committees</div>
+                        <div class="timeline-description">
+                            Directed media initiatives and communication strategies for the Arab Youth Union, Egypt, overseeing youth-focused campaigns and events.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021–2024</div>
+                        <div class="timeline-title">Media Manager</div>
+                        <div class="timeline-description">
+                            Oversaw media operations and strategic communications for the Arab Union for Tourism Media, Oman, managing content and cultural initiatives.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021–2024</div>
+                        <div class="timeline-title">Journalist</div>
+                        <div class="timeline-description">
+                            Produced and delivered news reports, conducted interviews, and created engaging multimedia content for television audiences at Dzair Tob Channel.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-title">Voice-over Artist & Editor</div>
+                        <div class="timeline-description">
+                            Provided professional narration for Isflex News Channel and editorial work for Al-Takween Magazine in Oman.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022–2024</div>
+                        <div class="timeline-title">Media & Communication Manager</div>
+                        <div class="timeline-description">
+                            Managed communications and media relations for the National Federation of Hospitality and Tourism, coordinating the largest traditional clothing festival "Bayya Al Bayat" in Algeria.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022–2024</div>
+                        <div class="timeline-title">Among the 100 Most Influential People</div>
+                        <div class="timeline-description">
+                            Recognized by the Arab Union for Tourism Media, Qatar for impact in media and communications field.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-title">Journalist Correspondent</div>
+                        <div class="timeline-description">
+                            Correspondent reporting on regional news stories and cultural events for Geel Dzair Satellite Channel.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-title">Arab Youth Ambassador</div>
+                        <div class="timeline-description">
+                            Awarded by the Arab Youth Union, Egypt for contributions to youth initiatives and media representation.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-title">Arab Youth Summit Participant</div>
+                        <div class="timeline-description">
+                            Participation Certificate from the Arab Youth Summit, Egypt for engagement in regional youth development initiatives.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-title">Best 100 of 2024</div>
+                        <div class="timeline-description">
+                            Honorary Certificate from the Supreme Council of Arab Journalists and Media, Egypt for professional excellence in journalism.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Get in Touch</h3>
+                    <p>
+                        Interested in collaborating or discussing a story idea? 
+                        Feel free to reach out through any of my social channels.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow My Work</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Twitter">𝕏</a>
+                        <a href="#" class="social-link" title="LinkedIn">in</a>
+                        <a href="#" class="social-link" title="Medium">M</a>
+                        <a href="#" class="social-link" title="Email">@</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Alexandra Moore. All rights reserved. | Design crafted with attention to detail.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // SCROLL ANIMATIONS
+        // ============================================
+        // Intersection Observer for fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    // Stagger animation for multiple elements
+                    const children = entry.target.querySelectorAll('.expertise-card, .article-card, .timeline-item');
+                    children.forEach((child, index) => {
+                        child.style.animation = `fadeInUp 0.8s ease-out ${index * 0.1}s forwards`;
+                        child.style.opacity = '0';
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('.section, .expertise-grid, .articles-grid, .timeline').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // SMOOTH SCROLL FOR NAVIGATION LINKS
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('nav');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add shadow on scroll
+            if (scrollTop > 50) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // ============================================
+        // ANIMATED SKILL BARS ON SCROLL INTO VIEW
+        // ============================================
+        const skillObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.animation = `none`;
+                        setTimeout(() => {
+                            bar.style.animation = `expandWidth ${600 + Math.random() * 400}ms ease-out forwards`;
+                        }, 10);
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.skills-container').forEach(el => {
+            skillObserver.observe(el);
+        });
+
+        // ============================================
+        // PARALLAX EFFECT ON HOVER (SUBTLE)
+        // ============================================
+        document.querySelectorAll('.article-card, .expertise-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) * 0.05;
+                const rotateY = (centerX - x) * 0.05;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // ============================================
+        // PAGE LOAD ANIMATION
+        // ============================================
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+
+        // Ensure body starts with opacity for animation
+        document.body.style.opacity = '0.95';
+        document.body.style.transition = 'opacity 0.5s ease-out';
+
+        // ============================================
+        // ACTIVE NAVIGATION LINK ON SCROLL
+        // ============================================
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                link.style.fontWeight = '';
+            });
+
+            if (current) {
+                const activeLink = document.querySelector(`.nav-links a[href="#${current}"]`);
+                if (activeLink) {
+                    activeLink.style.color = 'var(--color-accent)';
+                    activeLink.style.fontWeight = '600';
+                }
+            }
+        });
+
+        // ============================================
+        // COUNTER ANIMATION FOR STATS
+        // ============================================
+        function animateCounter(element, target, duration = 1500) {
+            let current = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.textContent.includes('+') ? '+' : '');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (element.textContent.includes('+') ? '+' : '');
+                }
+            }, 16);
+        }
+
+        // Animate stats when section comes into view
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const number = parseInt(text);
+                        animateCounter(stat, number);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stats').forEach(el => {
+            statsObserver.observe(el);
+        });
+
+        // ============================================
+        // MOBILE MENU TOGGLE (PLACEHOLDER)
+        // ============================================
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navContainer = document.querySelector('.nav-container');
+
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            // Mobile menu functionality would be expanded here
+        });
+    </script>
+</body>
+</html>
